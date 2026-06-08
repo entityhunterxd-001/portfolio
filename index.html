@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeev Kumar | AI & Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- html2pdf.js for generating real PDF downloads -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E293B',
+                        accent: '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .fade-in { animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Styles for the hidden PDF generation area */
+        #printable-area {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+        }
+        .printable-doc {
+            width: 8.5in;
+            background: white;
+            color: black;
+            padding: 0.5in;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.5;
+            font-size: 12pt;
+        }
+        .printable-doc h1 {
+            font-size: 24pt;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #111;
+            font-weight: bold;
+        }
+        .printable-doc h2 {
+            font-size: 14pt;
+            color: #2563eb; 
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 3px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .printable-doc p, .printable-doc li {
+            font-size: 11pt;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .printable-doc ul {
+            margin-left: 20px;
+            list-style-type: disc;
+            margin-bottom: 10px;
+        }
+        .printable-doc hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 15px 0;
+        }
+        .printable-doc strong {
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight">
+                    Sanjeev<span class="text-primary">.dev</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">About & CV</a>
+                        <a href="#projects" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#sop" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">SOP</a>
+                        <a href="#contact" class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Landing Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center fade-in">
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-slate-800 border border-slate-700 text-sm font-medium text-primary">
+                👋 High School Student & Aspiring AI Researcher
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Hi, I'm <span class="gradient-text">Sanjeev Kumar</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Motivated developer exploring the frontiers of <span class="text-white font-semibold">Artificial Intelligence</span>, <span class="text-white font-semibold">Machine Learning</span>, and Large Language Models through self-directed, open-source projects.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-primary hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-semibold transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2">
+                    <i class="fas fa-rocket"></i> View My Projects
+                </a>
+                <a href="https://github.com/sanjeevkumar456" target="_blank" class="glass-card hover:bg-slate-800 text-white px-8 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-github"></i> GitHub Profile
+                </a>
+            </div>
+            
+            <div class="mt-12 flex justify-center gap-6 text-slate-400">
+                <a href="https://github.com/sanjeevkumar456" target="_blank" class="hover:text-white transition-colors text-2xl" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/sanjeev-kumar-504b993a7/" target="_blank" class="hover:text-white transition-colors text-2xl" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/_kumar_sanjeev" target="_blank" class="hover:text-white transition-colors text-2xl" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                <a href="mailto:sanjeev.work@protonmail.com" class="hover:text-white transition-colors text-2xl" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & CV Section -->
+    <section id="about" class="py-20 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About & <span class="text-primary">Curriculum Vitae</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">A snapshot of my academic journey, technical skills, and continuous learning in Computer Science.</p>
+                
+                <!-- Download CV Button -->
+                <button onclick="downloadFile('cv-content', 'Sanjeev_Kumar_CV.pdf', this)" class="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg">
+                    <i class="fas fa-download"></i> Download My CV (PDF)
+                </button>
+                <p class="text-xs text-slate-500 mt-2">💡 Click to instantly generate and download a formatted PDF of my resume.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-graduation-cap text-primary"></i> Education</h3>
+                        <div class="border-l-2 border-primary pl-4 ml-2">
+                            <p class="font-semibold text-lg">Class 12 (PCMB)</p>
+                            <p class="text-slate-400">CBSE Board, New Delhi, India</p>
+                            <p class="text-sm text-primary mt-1">2024 – 2027 (Expected)</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-certificate text-accent"></i> Certifications</h3>
+                        <ul class="space-y-3 text-slate-300">
+                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-400 mt-1"></i> Google – Generative AI Fundamentals</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-400 mt-1"></i> DeepLearning.AI – Machine Learning Specialization</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-400 mt-1"></i> DeepLearning.AI – Deep Learning Specialization</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-400 mt-1"></i> NVIDIA – Python Course</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-400 mt-1"></i> Anthropic – Claude Prompt Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-code text-primary"></i> Technical Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Git & GitHub</span>
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">AI / LLMs</span>
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">PyTorch</span>
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">VS Code</span>
+                            <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Linux Basics</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-language text-accent"></i> Languages</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1"><span class="text-sm font-medium">Hindi</span><span class="text-sm text-slate-400">Native</span></div>
+                                <div class="w-full bg-slate-700 rounded-full h-2"><div class="bg-primary h-2 rounded-full" style="width: 100%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1"><span class="text-sm font-medium">English</span><span class="text-sm text-slate-400">Proficient</span></div>
+                                <div class="w-full bg-slate-700 rounded-full h-2"><div class="bg-accent h-2 rounded-full" style="width: 85%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-accent/40">
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2"><i class="fas fa-flask text-accent"></i> Current Research</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            I'm currently working on a <span class="text-white font-semibold">research paper on Persistent Memory for AI Agents</span> — exploring how autonomous systems can retain context, learn from past interactions, and maintain long-term reasoning across sessions.
+                        </p>
+                        <div class="mt-3 inline-flex items-center gap-2 text-xs text-accent">
+                            <span class="w-2 h-2 bg-accent rounded-full pulse-dot"></span> In Progress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-primary">Projects</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Hands-on experience building AI-powered solutions and exploring foundational LLM concepts.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Zero AI Agent -->
+                <div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fas fa-robot text-2xl"></i>
+                        </div>
+                        <a href="https://github.com/sanjeevkumar456/zero-ai-agent" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Zero AI Agent</h3>
+                    <p class="text-sm text-primary mb-4">Independent Developer | 2026 – Present</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Building AI-powered automation and assistant workflows. Designing and testing custom logic routines to automate repetitive programmatic tasks, featuring persistent memory for enhanced contextual understanding.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Python</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">AI Agent</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Automation</span>
+                    </div>
+                    <a href="https://github.com/sanjeevkumar456/zero-ai-agent" target="_blank" class="mt-6 inline-flex items-center gap-2 text-primary hover:text-white text-sm font-medium">
+                        View on GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2: Zero Coding Agent -->
+                <div class="glass-card p-8 rounded-2xl hover:border-accent/50 transition-all duration-300 group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-accent/10 rounded-lg text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                        <a href="https://github.com/sanjeevkumar456/zero-coding-agent" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Zero Coding Agent</h3>
+                    <p class="text-sm text-accent mb-4">Independent Developer | 2026 – Present</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        An AI-powered coding assistant capable of understanding, writing, and debugging code autonomously. Built with custom logic routines and integrated with modern LLMs to streamline development workflows.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Python</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">LLM</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">DevTools</span>
+                    </div>
+                    <a href="https://github.com/sanjeevkumar456/zero-coding-agent" target="_blank" class="mt-6 inline-flex items-center gap-2 text-accent hover:text-white text-sm font-medium">
+                        View on GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3: Zero LLM (Coming Soon) -->
+                <div class="glass-card p-8 rounded-2xl border border-slate-700 relative overflow-hidden">
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded-full flex items-center gap-1">
+                        <span class="w-2 h-2 bg-yellow-400 rounded-full pulse-dot"></span> Coming Soon
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-yellow-500/10 rounded-lg text-yellow-400">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Zero LLM</h3>
+                    <p class="text-sm text-yellow-400 mb-4">Independent Developer | 2026 – Present</p>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Exploring dataset preparation, tokenization, and model training concepts from the ground up. Actively learning open-source AI technologies and maintaining an experimental codebase.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Python</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">PyTorch</span>
+                        <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">NLP</span>
+                    </div>
+                    <p class="mt-6 text-sm text-slate-500 italic">🔨 GitHub repo coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement of Purpose (SOP) Section -->
+    <section id="sop" class="py-20 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Statement of <span class="text-primary">Purpose</span></h2>
+                <p class="text-slate-400 mb-6">My vision, motivation, and goals in the field of Computer Science.</p>
+                
+                <!-- Download SOP Button -->
+                <button onclick="downloadFile('sop-content', 'Sanjeev_Kumar_SOP.pdf', this)" class="inline-flex items-center gap-2 bg-gradient-to-r from-accent to-primary hover:opacity-90 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg">
+                    <i class="fas fa-file-pdf"></i> Download My SOP (PDF)
+                </button>
+            </div>
+            
+            <div class="glass-card p-8 md:p-12 rounded-2xl border-l-4 border-primary relative">
+                <i class="fas fa-quote-left text-4xl text-slate-700 absolute top-6 left-6 -z-10"></i>
+                <div class="space-y-6 text-slate-300 leading-relaxed text-lg">
+                    <p>
+                        As a high school student pursuing PCMB under the CBSE Board in New Delhi, my fascination with technology extends far beyond the standard curriculum. While my peers see code as a series of instructions, I see it as the foundational language of the future. My journey into Computer Science began with a simple curiosity about how machines learn, which quickly evolved into a dedicated, self-directed pursuit of Artificial Intelligence and Machine Learning.
+                    </p>
+                    <p>
+                        Rather than waiting for formal university education to begin my technical journey, I took the initiative to dive into open-source AI technologies. Through projects like <strong>Zero AI Agent</strong> and <strong>Zero Coding Agent</strong>, I have built autonomous systems that automate tasks, write code, and maintain contextual memory. Concurrently, my work on <strong>Zero LLM</strong> is helping me understand the foundational mechanics of language models — from tokenization to training.
+                    </p>
+                    <p>
+                        <span class="text-white font-semibold">Currently, I am working on a research paper exploring Persistent Memory in AI Agents</span> — investigating how autonomous systems can retain context, learn from past interactions, and maintain long-term reasoning across sessions. This research represents my attempt to bridge the gap between static AI models and truly adaptive, memory-aware agents.
+                    </p>
+                    <p>
+                        To solidify my foundational knowledge, I have proactively completed rigorous certifications, including the DeepLearning.AI Machine Learning and Deep Learning Specializations, Google's Generative AI Fundamentals, and NVIDIA's Python Course. These experiences have sharpened my technical skills in Python and PyTorch while teaching me the discipline required for independent research.
+                    </p>
+                    <p>
+                        My ultimate goal is to contribute to meaningful Computer Science research, specifically in making Large Language Models and AI Agents more efficient, accessible, and aligned with human intent. I am seeking opportunities to collaborate with like-minded mentors and researchers who can challenge my perspectives and help me transform my experimental codebase into impactful, real-world solutions.
+                    </p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-slate-700 flex justify-between items-center">
+                    <span class="font-semibold text-white">Sanjeev Kumar</span>
+                    <span class="text-sm text-slate-500">New Delhi, India</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's <span class="text-primary">Connect</span></h2>
+            <p class="text-slate-400 mb-10">I'm always open to discussing AI, new projects, or research opportunities.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <a href="mailto:sanjeev.work@protonmail.com" class="glass-card p-6 rounded-2xl hover:bg-slate-800 transition-all group">
+                    <i class="fas fa-envelope text-3xl text-primary mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-semibold mb-1">Email</h3>
+                    <p class="text-sm text-slate-400 break-all">sanjeev.work@protonmail.com</p>
+                </a>
+                <a href="tel:+919315301978" class="glass-card p-6 rounded-2xl hover:bg-slate-800 transition-all group">
+                    <i class="fas fa-phone text-3xl text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-semibold mb-1">Phone</h3>
+                    <p class="text-sm text-slate-400">+91 9315301978</p>
+                </a>
+                <a href="https://github.com/sanjeevkumar456" target="_blank" class="glass-card p-6 rounded-2xl hover:bg-slate-800 transition-all group">
+                    <i class="fab fa-github text-3xl text-white mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-semibold mb-1">GitHub</h3>
+                    <p class="text-sm text-slate-400">@sanjeevkumar456</p>
+                </a>
+                <a href="https://www.linkedin.com/in/sanjeev-kumar-504b993a7/" target="_blank" class="glass-card p-6 rounded-2xl hover:bg-slate-800 transition-all group">
+                    <i class="fab fa-linkedin text-3xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="font-semibold mb-1">LinkedIn</h3>
+                    <p class="text-sm text-slate-400">Sanjeev Kumar</p>
+                </a>
+            </div>
+
+            <a href="mailto:sanjeev.work@protonmail.com" class="inline-block bg-primary hover:bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-blue-500/25">
+                Send Me an Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 Sanjeev Kumar. Built with passion and code.</p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="https://github.com/sanjeevkumar456" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github"></i> GitHub</a>
+                <span>|</span>
+                <a href="https://www.linkedin.com/in/sanjeev-kumar-504b993a7/" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <span>|</span>
+                <a href="https://x.com/_kumar_sanjeev" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-x-twitter"></i> Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Printable Area for PDF Generation -->
+    <div id="printable-area">
+        <!-- CV Content -->
+        <div id="cv-content" class="printable-doc">
+            <h1>Sanjeev Kumar</h1>
+            <p style="text-align: center; color: #555; margin-top: 0;">sanjeev.work@protonmail.com | +91 9315301978 | New Delhi, India 110034</p>
+            <hr>
+            
+            <h2>Summary</h2>
+            <p>Motivated high school student with a strong interest in Computer Science, Artificial Intelligence, and software development. Actively learning programming, machine learning, and large language models through self-directed projects.</p>
+            
+            <h2>Skills</h2>
+            <p>Python | Git & GitHub | AI/LLMs | PyTorch | VS Code | Linux Basics</p>
+
+            <h2>Education</h2>
+            <p><strong>Class 12 (PCMB)</strong> <br> CBSE Board, New Delhi, India <br> <em>2024 - 2027 (Expected)</em></p>
+
+            <h2>Experience & Projects</h2>
+            <p><strong>Zero LLM</strong> – Independent Developer <br> <em>New Delhi, India | 2026 – Present</em></p>
+            <ul>
+                <li>Exploring dataset preparation, tokenization, and model training concepts.</li>
+                <li>Actively learning open-source AI technologies and maintaining an experimental codebase.</li>
+                <li>Maintaining a structured public GitHub portfolio to track progress.</li>
+            </ul>
+            
+            <p><strong>AI Agent Development</strong> – Independent Developer <br> <em>New Delhi, India | 2026 – Present</em></p>
+            <ul>
+                <li><strong>Zero AI Agent:</strong> Building AI-powered automation and assistant workflows. Designing and testing custom logic routines to automate repetitive programmatic tasks. Built with persistent memory.</li>
+                <li><strong>Zero Coding Agent:</strong> An AI-powered coding assistant capable of understanding, writing, and debugging code autonomously.</li>
+            </ul>
+
+            <h2>Certifications</h2>
+            <ul>
+                <li>Google – Generative AI Fundamentals</li>
+                <li>DeepLearning.AI – Machine Learning Specialization</li>
+                <li>DeepLearning.AI – Deep Learning Specialization</li>
+                <li>NVIDIA – Python Course</li>
+                <li>Anthropic – Claude Prompt Engineering</li>
+            </ul>
+
+            <h2>Languages</h2>
+            <p>Hindi: Native speaker | English: Proficient</p>
+
+            <h2>Interests</h2>
+            <p>Artificial Intelligence, Machine Learning, Computer Science Research</p>
+        </div>
+
+        <!-- SOP Content -->
+        <div id="sop-content" class="printable-doc">
+            <h1>STATEMENT OF PURPOSE</h1>
+            <p style="text-align: center;"><strong>Name:</strong> Sanjeev Kumar &nbsp; | &nbsp; <strong>Target Program:</strong> Bachelor Computer Science</p>
+            <hr>
+            
+            <h2>Introduction</h2>
+            <p>The rapid evolution of computational intelligence has fundamentally shifted how we solve complex, real-world problems. As a high school student specializing in the rigorous Physics, Chemistry, Mathematics, and Biology (PCMB) curriculum under the CBSE board, I have always been fascinated by the intersection of foundational science and intelligent systems. This academic background has instilled in me a deep analytical mindset and a passion for Computer Science Research, Artificial Intelligence, and Machine Learning. My journey as an independent developer has allowed me to bridge the gap between theoretical science and practical software development, and I am now eager to pursue an undergraduate degree in Computer Science to formalize my training and contribute to the next generation of AI technologies.</p>
+            
+            <h2>Academic Foundation and Self-Directed Learning</h2>
+            <p>While my high school PCMB curriculum provided me with a strong mathematical and logical framework, my fascination with artificial intelligence drove me to look beyond the traditional classroom. Driven by curiosity, I embarked on a rigorous self-directed learning path to master core engineering skills, gaining proficiency in Python, PyTorch, Git, GitHub, and Linux basics. To ensure my understanding met global professional standards, I challenged myself with advanced certifications. I successfully completed the DeepLearning.AI Machine Learning Specialization and Deep Learning Specialization, Google’s Generative AI Fundamentals, and Anthropic’s Claude Prompt Engineering course. These programs equipped me with a profound understanding of neural networks, optimization algorithms, data structures, and the mechanics of large language models (LLMs).</p>
+            
+            <h2>Practical Engineering and Research Initiatives</h2>
+            <p>I believe that true understanding comes from building. To apply my theoretical knowledge, I initiated "zero LLM," an independent development project where I actively experiment with dataset preparation, custom tokenization, and model training concepts. Managing this codebase and maintaining a structured public GitHub portfolio has taught me clean coding practices and the realities of open-source AI development.</p>
+            <p>Building upon my experience with foundational models, I transitioned into agentic workflows through my project, "Zero-agent". Here, I focused on designing and testing custom logic routines to build AI-powered automation and assistant workflows. A core milestone of this project was engineering a system built with persistent memory. This hands-on development exposed me to the critical challenge of context retention and long-term memory management in autonomous agents.</p>
+            <p>Driven to explore this problem deeper, I authored a comprehensive research paper focusing on persistent memory architectures within AI agents. Although the paper is currently unpublished, the process of writing it allowed me to deep-dive into academic literature, formulate hypotheses, and propose optimization structures for state retention in LLM-driven systems. This experience solidified my desire to pursue computer science not just as a software engineer, but as an active researcher.</p>
+            
+            <h2>Why This University and Future Goals</h2>
+            <p>An undergraduate degree in Computer Science at your esteemed institution is the definitive next step for my academic and professional growth. I am drawn to your university's cutting-edge computational labs, robust research culture, and a curriculum that balances theoretical computer science with hands-on engineering. I am particularly excited about the opportunity to collaborate with faculty members working on machine learning and autonomous systems, where I hope to further refine my research on persistent agent memory.</p>
+            <p>My long-term goal is to contribute to AI research that bridges the gap between static models and dynamic, deeply contextual autonomous assistants. Bringing a unique blend of a scientific PCMB background, a proven track record of self-motivated technical mastery, and a passion for original research, I am confident that I will be a proactive and valuable addition to your academic community.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for PDF Generation -->
+    <script>
+        function downloadFile(elementId, filename, btn) {
+            // Show loading state
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            btn.disabled = true;
+            
+            const element = document.getElementById(elementId);
+            const opt = {
+                margin:       0.5,
+                filename:     filename,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            // Generate and save PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Reset button after success
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }).catch(() => {
+                // Reset button if error
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                alert("Something went wrong while generating the PDF. Please try again.");
+            });
+        }
+    </script>
+
+</body>
+</html>
